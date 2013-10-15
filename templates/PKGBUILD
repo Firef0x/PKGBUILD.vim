@@ -1,0 +1,55 @@
+# Maintainer: Your Name <youremail@domain.com>
+pkgname=
+pkgver=
+pkgrel=1
+pkgdesc=""
+#epoch=0
+arch=('i686' 'x86_64')
+url=""
+license=()
+groups=()
+depends=()
+makedepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=${pkgname}.install
+changelog=
+source=(http://server/$pkgname-$pkgver.tar.gz)
+noextract=()
+md5sums=()
+#sha1sums=()
+#sha256sums=()
+#sha384sums=()
+#sha512sums=()
+
+pkgver()
+{
+
+}
+
+check()
+{
+
+}
+
+prepare()
+{
+
+}
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  make DESTDIR="$pkgdir/" install
+}

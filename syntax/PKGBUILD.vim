@@ -313,8 +313,4 @@ hi def link pbKeywords Keyword
 
 hi def link pbDate Special
 
-"syntax include @SHELL syntax/sh.vim
-"syntax region BUILD start=/^build()/ end=/^}/ contains=@SHELL
-"let b:current_syntax = "PKGBUILD"
-
 " vim: ft=vim
