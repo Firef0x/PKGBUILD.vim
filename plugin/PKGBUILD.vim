@@ -1,7 +1,7 @@
 " Vim plugin file
 " Language:	sh
 " Maintainer:	Firef0x
-" Last Changed: 2013 Oct 16
+" Last Changed: 2014 Jul 04
 " URL:		https://github.com/Firef0x/PKGBUILD.vim
 "
 " normalize the path
@@ -35,5 +35,18 @@ augroup PKGBUILDVIM
 	autocmd!
 	autocmd BufNewFile PKGBUILD call <SID>TLoad()
 augroup END
+
+" Some useful commands
+if executable('updpkgsums')
+	command! -nargs=0 -bar UpdPkgSums silent! lcd %:p:h
+				\| silent! exe '!updpkgsums > /dev/null'
+				\| echon "Pkgsums updated."
+endif
+
+if executable('mkaurball')
+	command! -nargs=0 -bar MkAur silent! lcd %:p:h
+				\| silent! exe '!mkaurball > /dev/null'
+				\| echon "AUR source package created."
+endif
 
 " vim: ft=vim: nofen
