@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language:     PKGBUILD
 " Maintainer:   Alessio 'mOLOk' Bolognino <themolok at gmail.com>
-" Last Change:  2007/05/08
+" Last Change:  2014/10/11
 " Version Info: PKGBUILD-0.2 (colorphobic)
 
 " For version 5.x: Clear all syntax items
@@ -211,7 +211,7 @@ hi def link pbValidSha512sums  Number
 
 " options
 syn keyword pb_k_options options contained
-syn match pbOptions /\(no\)\?\(strip\|docs\|libtool\|emptydirs\|zipman\|purge\|upx\|fakeroot\|distcc\|color\|ccache\|check\|sign\|makeflags\|buildflags\)/ contained
+syn match pbOptions /\(no\)\?\(strip\|docs\|libtool\|staticlibs\|emptydirs\|zipman\|purge\|upx\|debug\|fakeroot\|distcc\|color\|ccache\|check\|sign\|makeflags\|buildflags\)/ contained
 syn match   pbOptionsNeg     /\!/ contained
 syn match   pbOptionsDeprec  /no/ contained
 syn region pbOptionsGroup start=/^options=(/ end=/)/ contains=pb_k_options,pbOptions,pbOptionsNeg,pbOptionsDeprec,pbIllegalOption
@@ -312,5 +312,7 @@ hi def link pb_k_maintainer pbKeywords
 hi def link pbKeywords Keyword
 
 hi def link pbDate Special
+
+let b:current_syntax = "PKGBUILD"
 
 " vim: ft=vim
