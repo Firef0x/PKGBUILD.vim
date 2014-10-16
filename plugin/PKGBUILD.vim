@@ -1,16 +1,27 @@
 " Vim plugin file
-" Language:	sh
-" Maintainer:	Firef0x
-" Last Changed: 2014 Jul 04
-" URL:		https://github.com/Firef0x/PKGBUILD.vim
-"
-" normalize the path
+" Language:     PKGBUILD
+" Maintainer:   Firef0x <Firefgx {at) gmail [dot} com>
+" Last Change:  2014/10/17
+" Version Info: PKGBUILD-0.2 (colorphobic)
+" URL:          https://github.com/Firef0x/PKGBUILD.vim
+
+" Init: {{{1
+let s:cpo= &cpo
+if exists("g:loaded_pkgbuild_vim") || &cp
+	finish
+endif
+set cpo&vim
+let g:loaded_pkgbuild_vim = 1
+
+" Plugin Functions: {{{1
+
+" Normalize the path. {{{2
 " replace the windows path sep \ with /
 function! <SID>NormalizePath(path)
 	return substitute(a:path, "\\", "/", "g")
 endfunction
 
-" Template searching. {{{1
+" Template searching. {{{2
 " Returns a string containing the path of the parent directory of the given
 " path. Works like dirname(3). It also simplifies the given path.
 function! <SID>DirName(path)
@@ -18,11 +29,11 @@ function! <SID>DirName(path)
 	return substitute(l:tmp, "[^/][^/]*/*$", "", "")
 endfunction
 
-" Default templates directory
+" Loads a template for the current buffer {{{2
+" Default templates directory {{{3
 let s:default_template_dir = <SID>DirName(<SID>DirName(expand("<sfile>"))) . "templates"
 
-" Loads a template for the current buffer, substitutes variables and puts
-" cursor at %HERE%. Used to implement the BufNewFile autocommand.
+" substitutes variables and puts cursor at %HERE%. Used to implement the BufNewFile autocommand. {{{3
 function! <SID>TLoad()
 	let l:tFile = s:default_template_dir . "/PKGBUILD"
 	execute "0r " . l:tFile
@@ -30,23 +41,38 @@ function! <SID>TLoad()
 	setlocal nomodified
 endfunction
 
-" New PKGBUILD from templates
+" New PKGBUILD from templates {{{3
 augroup PKGBUILDVIM
 	autocmd!
 	autocmd BufNewFile PKGBUILD call <SID>TLoad()
 augroup END
 
-" Some useful commands
+" Plugin Commands: {{{1
+
 if executable('updpkgsums')
-	command! -nargs=0 -bar UpdPkgSums silent! lcd %:p:h
+	" Define the Command alias {{{2
+	command! -nargs=0 -bar UpdPkgSums :UPS
+	" Define the actual Command {{{2
+	command! -nargs=0 -bar UPS silent! lcd %:p:h
 				\| silent! exe '!updpkgsums > /dev/null'
-				\| echon "Pkgsums updated."
+				\| echon "Package sums updated."
 endif
+" }}}
 
 if executable('mkaurball')
-	command! -nargs=0 -bar MkAur silent! lcd %:p:h
+	" Define the Command alias {{{2
+	command! -nargs=0 -bar MkAurBall :MAB
+	command! -nargs=0 -bar MkAurBallForce :MAF
+	" Define the actual Command {{{2
+	command! -nargs=0 -bar MAB silent! lcd %:p:h
 				\| silent! exe '!mkaurball > /dev/null'
+				\| echon "AUR source package created."
+	command! -nargs=0 -bar MAF silent! lcd %:p:h
+				\| silent! exe '!mkaurball -f > /dev/null'
 				\| echon "AUR source package created."
 endif
 
-" vim: ft=vim: nofen
+" Restore: {{{1
+let &cpo=s:cpo
+unlet s:cpo
+" vim: ft=vim: ts=4 sts=4 fdm=marker com+=l\:\"

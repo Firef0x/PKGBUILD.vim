@@ -13,7 +13,7 @@ This plugin follows the standard runtime path structure, and as such it can be
 installed with a variety of plugin managers:
 
 *  [Pathogen][1]
-  *  `git clone https://github.com/Firef0x/PKGBUILD.vim ~/.vim/bundle/PKGBUILD.vim/`
+  *  `git clone https://github.com/Firef0x/PKGBUILD.vim.git ~/.vim/bundle/PKGBUILD.vim/`
 *  [NeoBundle][2]
   *  `NeoBundle 'Firef0x/PKGBUILD.vim'`
 *  [Vundle][3]
@@ -24,12 +24,14 @@ installed with a variety of plugin managers:
 
 # Usage
 
-Two commands:
+Some useful commands:
 
-*  :UpdPkgSums
-  * execute `updpkgsums` to update the md5sums/sha1sums/... in the current PKGBUILD, required package `pacman>=4`.
-*  :MkAur
-  * execute `mkaurball` to make the AUR package for submission to [Arch User Repository][6], required package `pkgbuild-introspection`.
+*  :UpdPkgSums or :UPS
+  * execute `updpkgsums` to update the md5sums/sha1sums/... in the current PKGBUILD, required package [pacman>=4][7].
+*  :MkAurBall or :MAB
+  * execute `mkaurball` to make the AUR package for submission to [Arch User Repository][6], required package [pkgbuild-introspection][8] or [pkgbuild-introspection-git][9].
+*  :MkAurBallForce or :MAF
+  * execute `mkaurball -f` to force to make the AUR package for submission to [Arch User Repository][6], required package [pkgbuild-introspection][8] or [pkgbuild-introspection-git][9].
 
 # Credit
 
@@ -45,3 +47,6 @@ Original Maintainer is Alessio 'mOLOk' Bolognino.
 [4]: http://www.vim.org/scripts/script.php?script_id=2700
 [5]: https://projects.archlinux.org/pacman.git/tree/contrib/PKGBUILD.vim
 [6]: https://aur.archlinux.org/
+[7]: https://www.archlinux.org/packages/core/x86_64/pacman/
+[8]: https://www.archlinux.org/packages/community/any/pkgbuild-introspection/
+[9]: https://aur.archlinux.org/packages/pkgbuild-introspection-git
