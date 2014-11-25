@@ -19,6 +19,11 @@ installed with a variety of plugin managers:
 *  [Vundle][3]
   *  `Plugin 'Firef0x/PKGBUILD.vim'` or
   *  `Bundle 'Firef0x/PKGBUILD.vim'`
+*  [AUR][10]
+  *  Add [Firef0x's Arch Linux Repository][11] and `pacman -S vim-pkgbuild` or
+  *  `yaourt -S vim-pkgbuild` or
+  *  `packer -S vim-pkgbuild` or
+  *  using `makepkg` to build the package and install
 *  Manual
   *  Copy all of the files into your `~/.vim` directory
 
@@ -38,15 +43,19 @@ Some useful commands:
 This is a modification of [PKGBUILD][4] in Vim Scripts.
 Original Maintainer is Nikolai Weibull.
 
-Latest syntax file is grabbed from package [Pacman-Contrib][5] .
+Latest syntax file and PKGBUILD template are grabbed from project [Pacman][5] .
 Original Maintainer is Alessio 'mOLOk' Bolognino.
 
-[1]: https://github.com/tpope/vim-pathogen
-[2]: https://github.com/Shougo/neobundle.vim
-[3]: https://github.com/gmarik/Vundle.vim
-[4]: http://www.vim.org/scripts/script.php?script_id=2700
-[5]: https://projects.archlinux.org/pacman.git/tree/contrib/PKGBUILD.vim
-[6]: https://aur.archlinux.org/
-[7]: https://www.archlinux.org/packages/core/x86_64/pacman/
-[8]: https://www.archlinux.org/packages/community/any/pkgbuild-introspection/
-[9]: https://aur.archlinux.org/packages/pkgbuild-introspection-git
+It seems that the project has to be released under [GNU GENERAL PUBLIC LICENSE Version 2](LICENSE) which is inherited from project [Pacman][5].
+
+[1]:  https://github.com/tpope/vim-pathogen
+[2]:  https://github.com/Shougo/neobundle.vim
+[3]:  https://github.com/gmarik/Vundle.vim
+[4]:  http://www.vim.org/scripts/script.php?script_id=2700
+[5]:  https://projects.archlinux.org/pacman.git
+[6]:  https://aur.archlinux.org/
+[7]:  https://www.archlinux.org/packages/core/x86_64/pacman/
+[8]:  https://www.archlinux.org/packages/community/any/pkgbuild-introspection/
+[9]:  https://aur.archlinux.org/packages/pkgbuild-introspection-git
+[10]: https://aur.archlinux.org/packages/vim-pkgbuild/
+[11]: http://firef0x.github.io/archrepo.html
