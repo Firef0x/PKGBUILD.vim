@@ -15,13 +15,13 @@ let g:loaded_pkgbuild_vim = 1
 
 " Plugin Functions: {{{1
 
-" Normalize the path. {{{2
+" Normalize The Path: {{{2
 " replace the windows path sep \ with /
 function! <SID>NormalizePath(path)
 	return substitute(a:path, "\\", "/", "g")
 endfunction
 
-" Template searching. {{{2
+" Template Searching: {{{2
 " Returns a string containing the path of the parent directory of the given
 " path. Works like dirname(3). It also simplifies the given path.
 function! <SID>DirName(path)
@@ -29,7 +29,7 @@ function! <SID>DirName(path)
 	return substitute(l:tmp, "[^/][^/]*/*$", "", "")
 endfunction
 
-" Loads a template for the current buffer {{{2
+" Loads Template: {{{2
 " Default templates directory {{{3
 let s:default_template_dir = <SID>DirName(<SID>DirName(expand("<sfile>"))) . "templates"
 
@@ -75,4 +75,7 @@ endif
 " Restore: {{{1
 let &cpo=s:cpo
 unlet s:cpo
+
+" Vim Modeline: {{{1
 " vim: ft=vim: ts=4 sts=4 fdm=marker com+=l\:\"
+" }}}
